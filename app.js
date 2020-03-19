@@ -2,14 +2,16 @@ const http = require('http');
 const fs = require('fs');
 const hostname = '127.0.0.1';
 const port = 3020;
+const notFoundMsg = 'Resourse not found!';
+const homePageName = 'index.html';
 
 const notFoundRes = function (res) {
    res.statusCode = 404;
-   res.end('<h1>Resourse not found!</h1>');
+   res.end(`<h1>${notFoundMsg}</h1>`);
 }
 const showFile = function (filePath, res) {
    if (filePath === '/') {
-      filePath = 'index.html';
+      filePath = homePageName;
    }
    else {
       filePath = filePath.substr(1);
